@@ -1,0 +1,17 @@
+Name: ravana
+Version: 0.1
+Synopsis: Ravana to Javascript transpiler
+Authors: Nir Lanka
+License: MIT
+
+Description: A simple compiler for Ravana to Javascript
+
+OASISFormat: 0.4
+BuildTools: ocamlbuild
+Plugins: META (0.4), DevFiles (0.4)
+
+Executable "ravana"
+    Path: src
+    MainIs: ravana.ml
+    BuildDepends:
+        core_kernel

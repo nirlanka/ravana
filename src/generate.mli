@@ -1,0 +1,1 @@
+val generate : string -> Ast.prog -> unit

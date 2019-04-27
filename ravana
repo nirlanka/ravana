@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# output is name of source file w/out extension
+out="${1%.*}"
+
+# unless it's specified with -o
+while getopts "ho:" opt; do
+    case "$opt" in
+        o )
+            out=$OPTARG;;
+        h )
+            echo "USAGE: ravana [-o output] inputs"
+            exit 0;;
+        *)
+            echo "USAGE: ravana [-o output] inputs"
+            exit 1;;
+    esac
+done
+shift $(expr $OPTIND - 1 )
+
+if [ -z "$1" ]
+then
+    echo "USAGE: ravana [-o output] inputs"
+    echo "Must specify at least one input file"
+    exit 1
+fi
+
+until [ -z "$1" ]
+do
+    `dirname $0`/ravana.byte $1 #compile to js
+    if [[ $? != 0 ]]; then
+        exit 1
+    fi
+    shift
+done

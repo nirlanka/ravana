@@ -1,0 +1,24 @@
+sum x y => x*y
+
+p = 3
+q = 4 + 9
+
+sum p q
+
+sum_list ll = ll |> [] -> 0 |> l..t -> sum l (sum t)
+
+sum_list ll = ll 
+	|> [] -> 0 
+	|> l..t -> sum l (sum t)
+
+open Base, IO	# Module names start with capital.
+				# All other user vars and functions
+				# start with simple.
+
+capture window, document # throw error if not available
+
+sum_list 1, 1, 1 != 3 ? IO log 'Too bad';
+
+sum_list [1, 1, 1] != 3 ? IO log 'Too bad' : IO log 'Perfect'
+
+p2 = p - 3
